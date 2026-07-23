@@ -1,0 +1,8 @@
+{
+  "name": "ADN Dental - Excellence in Dental Solutions",
+  "description": "Premium dental equipment importer in Algeria, providing advanced imaging, surgical tools, and technical support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
