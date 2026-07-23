@@ -17,8 +17,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
   const navLinks = [
     { path: '/', label: t('nav_home') },
     { path: '/catalog', label: t('nav_catalog') },
-    { path: '/brand/dgshape', label: 'DGSHAPE' },
-    { path: '/brand/zubler', label: 'Zubler' },
     { path: '/courses', label: t('nav_courses') },
     { path: '/news', label: t('nav_news') },
     { path: '/support', label: t('nav_tech') },
@@ -183,11 +181,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestQuote }) => {
                 </button>
 
                 <a
-                  href="tel:+213555123456"
+                  href="tel:+213698094000"
                   className="w-full border border-zinc-700 text-white py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2"
                 >
                   <PhoneCall className="w-4 h-4 text-[#FF6600]" />
-                  +213 555 12 34 56
+                  +213 698 09 40 00
                 </a>
               </div>
             </div>

@@ -93,7 +93,7 @@ export const TRANSLATIONS = {
     tech_phone: "Technical Assistance",
     email_label: "Email Address",
     address_label: "Showroom Address",
-    address_val: "Algiers, Algeria",
+    address_val: "P7QF+F7H, Rouïba, Algiers, Algeria, 16000",
 
     // Quote Modal
     quote_modal_title: "Request Quotation",
@@ -200,7 +200,7 @@ export const TRANSLATIONS = {
     tech_phone: "Assistance Technique",
     email_label: "Adresse Email",
     address_label: "Showroom",
-    address_val: "Alger, Algérie",
+    address_val: "P7QF+F7H, Rouïba, Alger, Algérie, 16000",
 
     // Quote Modal
     quote_modal_title: "Demande de Devis",
@@ -307,7 +307,7 @@ export const TRANSLATIONS = {
     tech_phone: "المساعدة التقنية",
     email_label: "البريد الإلكتروني",
     address_label: "عنوان المعرض",
-    address_val: "الجزائر العاصمة، الجزائر",
+    address_val: "P7QF+F7H، الرويبة، الجزائر العاصمة، الجزائر، 16000",
 
     // Quote Modal
     quote_modal_title: "طلب عرض سعر رسمياً",

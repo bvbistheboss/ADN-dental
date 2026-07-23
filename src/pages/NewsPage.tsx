@@ -27,7 +27,7 @@ export const NewsPage: React.FC = () => {
         </div>
 
         {/* Articles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 ${NEWS_ARTICLES.length > 1 ? 'md:grid-cols-3' : 'max-w-xl mx-auto'} gap-8`}>
           {NEWS_ARTICLES.map((article) => (
             <div
               key={article.id}

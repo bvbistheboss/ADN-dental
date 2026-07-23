@@ -13,7 +13,7 @@ export const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const SALES_NUM = '213555123456';
+    const SALES_NUM = '213698094000';
     const msg = `Inquiry from ${name} (${phone}, ${email}):\n${message}`;
     window.open(`https://wa.me/${SALES_NUM}?text=${encodeURIComponent(msg)}`, '_blank');
     setSent(true);
@@ -54,24 +54,10 @@ export const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF6600] block">
-                      {t('sales_phone')}
+                      Sales & Support (WhatsApp)
                     </span>
-                    <a href="tel:+213555123456" className="text-xl font-bold font-['Space_Grotesk'] hover:text-[#FF6600]">
-                      +213 555 12 34 56
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-2xl bg-zinc-900 border border-zinc-800 text-[#FF6600] flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF6600] block">
-                      {t('tech_phone')}
-                    </span>
-                    <a href="tel:+213666123456" className="text-xl font-bold font-['Space_Grotesk'] hover:text-[#FF6600]">
-                      +213 666 12 34 56
+                    <a href="tel:+213698094000" className="text-xl font-bold font-['Space_Grotesk'] hover:text-[#FF6600]">
+                      +213 698 09 40 00
                     </a>
                   </div>
                 </div>
@@ -98,10 +84,29 @@ export const ContactPage: React.FC = () => {
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF6600] block">
                       {t('address_label')}
                     </span>
-                    <span className="text-sm text-zinc-300 font-bold block">
+                    <a 
+                      href="https://www.google.com/maps/place/ADN+dental/@36.7386848,3.2706592,17z/data=!3m1!4b1!4m6!3m5!1s0x128e4500012e44f1:0xe9b6cfc2cf87b765!8m2!3d36.7386805!4d3.2732341!16s%2Fg%2F11z01rfjns" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm text-zinc-300 font-bold block hover:text-[#FF6600] transition-colors"
+                    >
                       {t('address_val')}
-                    </span>
+                    </a>
                   </div>
+                </div>
+
+                <div className="pt-2">
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61588218131999" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-md"
+                  >
+                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Visit Facebook Page</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -203,8 +208,8 @@ export const ContactPage: React.FC = () => {
             {/* Map Frame */}
             <div className="rounded-2xl overflow-hidden border border-zinc-200 h-48 bg-zinc-200">
               <iframe
-                title="ADN Dental Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3198!2d3.0!3d36.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128fb21642790449%3A0x658f6251287e0487!2sAlgiers!5e0!3m2!1sen!2sdz!4v1620000000000!5m2!1sen!2sdz"
+                title="ADN Dental Location Rouiba Algiers"
+                src="https://maps.google.com/maps?q=36.7386805,3.2732341&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

@@ -290,7 +290,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 ${NEWS_ARTICLES.length > 1 ? 'md:grid-cols-3' : 'max-w-xl mx-auto'} gap-8`}>
           {NEWS_ARTICLES.map((article) => (
             <div key={article.id} className="bg-white rounded-3xl border border-zinc-200 overflow-hidden flex flex-col group hover:border-[#FF6600] transition-colors">
               <div className="aspect-video overflow-hidden">
@@ -350,10 +350,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
             Submit Technical Ticket
           </Link>
           <a
-            href="tel:+213666123456"
+            href="tel:+213698094000"
             className="border border-white/30 hover:border-white text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all w-full sm:w-auto text-center"
           >
-            Call +213 666 12 34 56
+            Call +213 698 09 40 00
           </a>
         </div>
       </section>

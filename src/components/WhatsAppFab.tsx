@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'motion/react';
 export const WhatsAppFab: React.FC = () => {
   const [open, setOpen] = useState(false);
 
-  const SALES_NUM = '213555123456';
-  const TECH_NUM = '213666123456';
+  const SALES_NUM = '213698094000';
+  const TECH_NUM = '213698094000';
 
   const handleOpen = (num: string, text: string) => {
     const encoded = encodeURIComponent(text);
@@ -51,7 +51,7 @@ export const WhatsAppFab: React.FC = () => {
                   <Sparkles className="w-4 h-4" />
                   <span>Sales & Quotations</span>
                 </div>
-                <span className="text-[10px] font-mono opacity-80">+213 555</span>
+                <span className="text-[10px] font-mono opacity-80">+213 698</span>
               </button>
 
               <button
@@ -62,7 +62,7 @@ export const WhatsAppFab: React.FC = () => {
                   <Wrench className="w-4 h-4 text-[#FF6600]" />
                   <span>24/7 Tech Assistance</span>
                 </div>
-                <span className="text-[10px] font-mono opacity-80">+213 666</span>
+                <span className="text-[10px] font-mono opacity-80">+213 698</span>
               </button>
             </div>
           </motion.div>

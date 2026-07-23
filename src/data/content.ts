@@ -2,34 +2,14 @@ import { NewsArticle, Course, TechDownload, FAQItem } from '../types';
 
 export const NEWS_ARTICLES: NewsArticle[] = [
   {
-    id: 'news-1',
-    title: 'New Official DGSHAPE CAD/CAM Training Center Opens in Algiers',
-    date: 'July 15, 2026',
-    category: 'Expansion',
-    summary: 'ADN Dental officially inaugurates its state-of-the-art CAD/CAM training wing in Algiers equipped with DWX-53DC mills and live scanning stations.',
-    content: 'We are thrilled to announce the opening of our brand-new DGSHAPE Training Center in central Algiers. Designed to give lab owners and dental technicians hands-on experience with 5-axis milling, MillBox CAM nesting software, and zirconia sintering protocols. Registration for upcoming cohorts is now open.',
-    image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80',
-    author: 'ADN Dental Team'
-  },
-  {
-    id: 'news-2',
-    title: 'Exclusive Partnership Renewal with Zubler Dental Germany',
-    date: 'June 02, 2026',
-    category: 'Partnership',
-    summary: 'ADN Dental reinforces its standing as the exclusive authorized importer and certified service hub for Zubler furnaces and suction systems in Algeria.',
-    content: 'For over 14 years, ADN Dental and Zubler Germany have delivered unmatched ceramic pressing precision to Algerian prosthedontists. This agreement guarantees immediate availability of spare parts, original quartz muffles, and factory-certified warranty service.',
-    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80',
-    author: 'Management'
-  },
-  {
-    id: 'news-3',
-    title: 'Showcasing Next-Gen DWX-53DC at DENTEX Algeria 2026',
-    date: 'April 20, 2026',
-    category: 'Events',
-    summary: 'Over 1,200 visitors experienced live demonstration of 24-hour automated 6-disc dry milling at the ADN Dental pavilion.',
-    content: 'At DENTEX 2026, ADN Dental demonstrated the unmatched speed and accuracy of the DWX-53DC. Dental technicians witnessed live 6-slot automatic material changing, automated recalibration, and dust-free PMMA milling with integrated ionizer technology.',
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80',
-    author: 'Events Team'
+    id: 'news-opening-soon',
+    title: 'Ouverture prochainement',
+    date: '2026',
+    category: 'Annonce',
+    summary: 'Nous aurons le plaisir de vous accueillir très bientôt dans notre nouveau showroom et centre de service à Rouïba, Alger.',
+    content: 'Nous sommes ravis d\'annoncer l\'ouverture prochaine de nos nouveaux locaux à Rouïba, Alger. ADN Dental se prépare à vous offrir une expérience d\'exception avec le meilleur des équipements dentaires CAD/CAM DGSHAPE et Zubler. Restez connectés pour la date d\'inauguration officielle !',
+    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
+    author: 'ADN Dental'
   }
 ];
 

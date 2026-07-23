@@ -23,7 +23,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, default
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const SALES_NUM = '213555123456';
+    const SALES_NUM = '213698094000';
     const msg = `Quotation Request:\n- Product: ${product}\n- Name: ${name}\n- Phone: ${phone}\n- Wilaya: ${wilaya}\n- Notes: ${notes || 'N/A'}`;
     const encoded = encodeURIComponent(msg);
     window.open(`https://wa.me/${SALES_NUM}?text=${encoded}`, '_blank');

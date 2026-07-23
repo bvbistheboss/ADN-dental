@@ -9,7 +9,7 @@ export const CoursesPage: React.FC = () => {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   const handleEnroll = (courseName: string) => {
-    const SALES_NUM = '213555123456';
+    const SALES_NUM = '213698094000';
     const msg = encodeURIComponent(`Enrollment Request for Course: ${courseName}`);
     window.open(`https://wa.me/${SALES_NUM}?text=${msg}`, '_blank');
   };

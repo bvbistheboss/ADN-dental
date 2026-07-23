@@ -16,7 +16,7 @@ export const SupportPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const TECH_NUM = '213666123456';
+    const TECH_NUM = '213698094000';
     const msg = `TECHNICAL SUPPORT TICKET:\n- Name: ${name}\n- Phone: ${phone}\n- Wilaya: ${wilaya}\n- Machine S/N: ${serial || 'N/A'}\n- Description: ${problem}`;
     const encoded = encodeURIComponent(msg);
     window.open(`https://wa.me/${TECH_NUM}?text=${encoded}`, '_blank');

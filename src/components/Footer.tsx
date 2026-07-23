@@ -106,26 +106,39 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#FF6600] shrink-0 mt-0.5" />
-                <span className="text-zinc-300">{t('address_val')}</span>
+                <a 
+                  href="https://www.google.com/maps/place/ADN+dental/@36.7386848,3.2706592,17z/data=!3m1!4b1!4m6!3m5!1s0x128e4500012e44f1:0xe9b6cfc2cf87b765!8m2!3d36.7386805!4d3.2732341!16s%2Fg%2F11z01rfjns" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-zinc-300 hover:text-[#FF6600] transition-colors"
+                >
+                  {t('address_val')}
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#FF6600] shrink-0" />
                 <div className="text-zinc-300">
-                  <span className="text-xs text-zinc-500 block uppercase font-mono">Sales</span>
-                  <a href="tel:+213555123456" className="hover:text-[#FF6600] font-bold">+213 555 12 34 56</a>
-                </div>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#FF6600] shrink-0" />
-                <div className="text-zinc-300">
-                  <span className="text-xs text-zinc-500 block uppercase font-mono">Tech Support</span>
-                  <a href="tel:+213666123456" className="hover:text-[#FF6600] font-bold">+213 666 12 34 56</a>
+                  <span className="text-xs text-zinc-500 block uppercase font-mono">Sales & Support</span>
+                  <a href="tel:+213698094000" className="hover:text-[#FF6600] font-bold">+213 698 09 40 00</a>
                 </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#FF6600] shrink-0" />
                 <a href="mailto:contact@adn-dental.dz" className="text-zinc-300 hover:text-[#FF6600] font-bold">
                   contact@adn-dental.dz
+                </a>
+              </li>
+              <li className="pt-2">
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61588218131999" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white border border-blue-500/30 text-xs font-bold transition-all"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  <span>Follow on Facebook</span>
                 </a>
               </li>
             </ul>
