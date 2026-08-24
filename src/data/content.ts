@@ -90,44 +90,62 @@ export const DOWNLOADS: TechDownload[] = [
     fileSize: '8.5 MB',
     version: 'v1.12',
     description: 'Firmware update for automatic 24V signal sync and motor speed curve optimizations.'
+  },
+  {
+    id: 'dl-5',
+    title: 'Castellini Skema Series Clinic Installation & Plumbing Guide',
+    category: 'Manual',
+    brand: 'Castellini',
+    fileSize: '18.4 MB',
+    version: 'v4.2 PDF',
+    description: 'Site preparation specifications, floor connections, air/water pressure requirements, and electrical schematics for Castellini dental units.'
+  },
+  {
+    id: 'dl-6',
+    title: 'Castellini Thalya Plus Maintenance & Hygiene Protocols',
+    category: 'Manual',
+    brand: 'Castellini',
+    fileSize: '6.2 MB',
+    version: 'v2.0 PDF',
+    description: 'Operating manual and daily hygiene routines for automatic handpiece lubrication and cleaning.'
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
     question: {
-      en: 'What warranty is provided with DGSHAPE and Zubler equipment?',
-      fr: 'Quelle est la garantie fournie avec les équipements DGSHAPE et Zubler ?',
-      ar: 'ما هي فترة الضمان المقدمة مع معدات DGSHAPE و Zubler؟'
+      en: 'What warranty is provided with DGSHAPE, Zubler, and Castellini equipment?',
+      fr: 'Quelle est la garantie fournie avec les équipements DGSHAPE, Zubler et Castellini ?',
+      ar: 'ما هي فترة الضمان المقدمة مع معدات DGSHAPE و Zubler و Castellini؟'
     },
     answer: {
-      en: 'All new DGSHAPE milling machines and Zubler furnaces imported by ADN Dental come with a comprehensive 2-year manufacturer warranty, including local on-site technical support and original replacement parts in Algeria.',
-      fr: 'Toutes les usineuses DGSHAPE et les fours Zubler importés par ADN Dental bénéficient d\'une garantie constructeur de 2 ans, incluant le support technique sur site et les pièces d\'origine en Algérie.',
-      ar: 'جميع أجهزة الخراطة من DGSHAPE وأفران Zubler المستوردة من ADN Dental تأتي بضمان شامل لمدة سنتين، يشمل الصيانة الميدانية وقطع الغيار الأصلية في الجزائر.'
+      en: 'All new DGSHAPE milling machines, Zubler furnaces, and Castellini dental units imported by ADN Dental come with a comprehensive 2-year manufacturer warranty, including certified local on-site technical installation, maintenance, and original replacement parts in Algeria.',
+      fr: 'Toutes les usineuses DGSHAPE, fours Zubler et unités de soins Castellini importés par ADN Dental bénéficient d\'une garantie constructeur de 2 ans, incluant l\'installation sur site, le support technique et les pièces d\'origine en Algérie.',
+      ar: 'جميع أجهزة الخراطة من DGSHAPE، أفران Zubler ووحدات الأسنان كاستيليني المستوردة من ADN Dental تأتي بضمان شامل لمدة سنتين، يشمل التركيب الميداني، الصيانة وقطع الغيار الأصلية في الجزائر.'
     }
   },
   {
     question: {
-      en: 'How quickly can an ADN Dental technician service my machine in case of a breakdown?',
-      fr: 'À quelle vitesse un technicien ADN Dental peut-il intervenir en cas de panne ?',
-      ar: 'ما هي سرعة استجابة تقني ADN Dental في حالة حدوث عطل؟'
+      en: 'How quickly can an ADN Dental technician service my machine or dental chair in case of a breakdown?',
+      fr: 'À quelle vitesse un technicien ADN Dental peut-il intervenir sur mon équipement ou fauteuil dentaire ?',
+      ar: 'ما هي سرعة استجابة تقني ADN Dental في حالة حدوث عطل في الجهاز أو كرسي الأسنان؟'
     },
     answer: {
-      en: 'We guarantee a 24-hour response time across all 69 wilayas. For critical software or calibration issues, our certified engineers provide immediate remote assistance via VPanel and TeamViewer.',
-      fr: 'Nous garantissons un délai de réponse de 24 heures à travers les 69 wilayas. Pour les problèmes de logiciel ou calibrage, nous proposons une assistance à distance immédiate.',
-      ar: 'نضمن وقت استجابة خلال 24 ساعة عبر جميع الولايات الـ 69. بالنسبة للمشاكل البرمجية، يقدم مهندسونا المعتمدون الدعم الفوري عن بُعد.'
+      en: 'We guarantee a 24-hour response time across all 69 wilayas. For critical software or calibration issues, our certified engineers provide immediate remote assistance via VPanel and TeamViewer, while our field engineers deploy on-site for dental units and hardware repairs.',
+      fr: 'Nous garantissons un délai de réponse de 24 heures à travers les 69 wilayas. Pour les problèmes logiciels, nous fournissons une assistance à distance immédiate, et nos techniciens interviennent sur place pour les fauteuils et réparations matérielles.',
+      ar: 'نضمن وقت استجابة خلال 24 ساعة عبر جميع الولايات الـ 69. للمشاكل البرمجية نقدم الدعم الفوري عن بُعد، ويتنقل مهندسونا الميدانيون مباشرة لصيانة كراسي الأسنان والأعطال الميكانيكية.'
     }
   },
   {
     question: {
-      en: 'Are original burs, filters, and spare parts available in stock?',
-      fr: 'Les fraises d\'origine, filtres et pièces de rechange sont-ils disponibles en stock ?',
-      ar: 'هل تتوفر الأدوات الأصلية والفلاتر وقطع الغيار في المخزن؟'
+      en: 'Are original burs, filters, valves, and spare parts available in stock?',
+      fr: 'Les fraises d\'origine, filtres, valves et pièces de rechange sont-ils disponibles en stock ?',
+      ar: 'هل تتوفر الأدوات الأصلية، الفلاتر، الصمامات وقطع الغيار في المخزن؟'
     },
     answer: {
-      en: 'Yes, our central warehouse in Algiers maintains a permanent inventory of original Roland/DGSHAPE diamond and carbide burs, Zubler quartz muffles, HEPA filter bags, and replacement spindles for immediate dispatch.',
-      fr: 'Oui, notre entrepôt central à Alger maintient un stock permanent de fraises d\'origine Roland/DGSHAPE, muffles Zubler, sacs filtres HEPA et broches de rechange pour expédition immédiate.',
-      ar: 'نعم، يضمن مستودعنا المركزي بالجزائر العاصمة توفر الأدوات الأصلية، أكياس الفلاتر، وأفران السيراميك والتسليم الفوري لجميع الولايات.'
+      en: 'Yes, our central warehouse in Algiers maintains a permanent inventory of original Roland/DGSHAPE diamond and carbide burs, Zubler quartz muffles, HEPA filter bags, and genuine Castellini hydraulic/electronic valves and upholstery for immediate dispatch.',
+      fr: 'Oui, notre entrepôt central à Alger maintient un stock permanent de fraises d\'origine Roland/DGSHAPE, muffles Zubler, filtres HEPA ainsi que pièces hydrauliques et électroniques d\'origine Castellini.',
+      ar: 'نعم، يضمن مستودعنا المركزي بالجزائر العاصمة توفر أدوات الخراطة الأصلية، أفران السيراميك، فلاتر الشفط، وقطع الغيار الأصلية الهيدروليكية والإلكترونية لكاستيليني والتسليم الفوري لجميع الولايات.'
     }
   }
 ];

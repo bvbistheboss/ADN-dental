@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useCatalog } from '../context/CatalogContext';
 import { X, Send, Sparkles, CheckCircle2 } from 'lucide-react';
-import { PRODUCTS } from '../data/products';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -11,11 +11,12 @@ interface QuoteModalProps {
 
 export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, defaultProduct }) => {
   const { t } = useLanguage();
+  const { products, addInquiry } = useCatalog();
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [wilaya, setWilaya] = useState('');
-  const [product, setProduct] = useState(defaultProduct || 'DWX-53DC');
+  const [product, setProduct] = useState(defaultProduct || (products[0]?.name || 'DWX-53DC'));
   const [notes, setNotes] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -23,6 +24,18 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, default
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Save to CRM / Inquiries in Admin Portal
+    addInquiry({
+      type: 'quote',
+      name: name.trim() || 'Client (Web)',
+      phone: phone.trim(),
+      wilaya: wilaya.trim() || 'Algeria',
+      productOrTopic: product,
+      notes: notes.trim(),
+      date: new Date().toLocaleDateString('fr-FR'),
+    });
+
     const SALES_NUM = '213698094000';
     const msg = `Quotation Request:\n- Product: ${product}\n- Name: ${name}\n- Phone: ${phone}\n- Wilaya: ${wilaya}\n- Notes: ${notes || 'N/A'}`;
     const encoded = encodeURIComponent(msg);
@@ -82,7 +95,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, default
                   onChange={(e) => setProduct(e.target.value)}
                   className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF6600]"
                 >
-                  {PRODUCTS.map((p) => (
+                  {products.map((p) => (
                     <option key={p.id} value={p.name}>
                       {p.brand} - {p.name} ({p.categoryLabel})
                     </option>

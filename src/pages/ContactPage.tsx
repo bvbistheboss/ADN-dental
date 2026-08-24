@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useCatalog } from '../context/CatalogContext';
 import { MapPin, Phone, Mail, Clock, Send, Sparkles, ShieldCheck } from 'lucide-react';
 
 export const ContactPage: React.FC = () => {
   const { t } = useLanguage();
+  const { addInquiry } = useCatalog();
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -13,6 +15,17 @@ export const ContactPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    addInquiry({
+      type: 'contact',
+      name: name.trim() || 'General Contact',
+      phone: phone.trim(),
+      email: email.trim(),
+      productOrTopic: 'General Inquiry / Showroom Visit',
+      notes: message.trim(),
+      date: new Date().toLocaleDateString('fr-FR'),
+    });
+
     const SALES_NUM = '213698094000';
     const msg = `Inquiry from ${name} (${phone}, ${email}):\n${message}`;
     window.open(`https://wa.me/${SALES_NUM}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -44,7 +57,7 @@ export const ContactPage: React.FC = () => {
           <div className="lg:col-span-5 bg-[#09090b] text-white rounded-[36px] p-8 sm:p-10 border border-zinc-800 shadow-xl flex flex-col justify-between space-y-8">
             <div className="space-y-6">
               <h2 className="text-2xl font-black uppercase font-['Space_Grotesk'] text-white">
-                Contact Details
+                {t('contact_title')}
               </h2>
 
               <div className="space-y-6 text-sm">
@@ -54,7 +67,7 @@ export const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF6600] block">
-                      Sales & Support (WhatsApp)
+                      {t('sales_phone')}
                     </span>
                     <a href="tel:+213698094000" className="text-xl font-bold font-['Space_Grotesk'] hover:text-[#FF6600]">
                       +213 698 09 40 00
@@ -105,7 +118,7 @@ export const ContactPage: React.FC = () => {
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
-                    <span>Visit Facebook Page</span>
+                    <span>Facebook</span>
                   </a>
                 </div>
               </div>

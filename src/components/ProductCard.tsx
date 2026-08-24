@@ -33,7 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onRequestQuot
         {product.isFeatured && (
           <div className="absolute top-4 right-4 bg-[#FF6600] text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1">
             <Sparkles className="w-3 h-3" />
-            <span>Featured</span>
+            <span>{t('badge_featured')}</span>
           </div>
         )}
       </div>
@@ -74,16 +74,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onRequestQuot
             to={`/product/${product.id}`}
             className="flex-1 bg-zinc-900 hover:bg-[#FF6600] text-white py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all"
           >
-            <span>Explore</span>
+            <span>{t('btn_explore')}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
 
           <button
             onClick={() => onRequestQuote(product.name)}
             className="px-4 py-3 border border-zinc-200 hover:border-[#FF6600] text-zinc-800 hover:text-[#FF6600] rounded-full text-xs font-bold uppercase tracking-wider transition-all"
-            title="Request Quote"
+            title={t('btn_quote')}
           >
-            Quote
+            {t('btn_quote_short')}
           </button>
         </div>
 

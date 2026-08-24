@@ -240,5 +240,111 @@ export const PRODUCTS: Product[] = [
       'HEPA filter traps 99.97% of fine milling dust',
       'Compact footprint under table or in cabinet'
     ]
+  },
+  {
+    id: 'skema-6',
+    name: 'Castellini Skema 6',
+    brand: 'Castellini',
+    brandLabel: 'Castellini Italy',
+    category: 'units',
+    categoryLabel: 'Dental Treatment Unit',
+    tagline: 'High-end Italian dental unit with 7" Full Touch HD display and advanced clinical ergonomics.',
+    description: 'The pinnacle of Italian dental engineering. Incorporating a 7" Full Touch multimedia console, automated hygiene systems, and ultra-smooth Soft Motion patient chair.',
+    fullOverview: 'Designed and manufactured in Imola, Italy, the Castellini Skema 6 represents the gold standard in dental units. Featuring independent instrument control, integrated endodontic/implantology software with apex locator, FLUIDS hygiene circuit, and Venus Plus L LED operating light, it delivers unmatched comfort and precision to dentists across Algeria.',
+    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80'
+    ],
+    specs: [
+      { label: 'Origin', value: '100% Made in Italy (Castellini)' },
+      { label: 'Display Console', value: '7" Full Touch HD Multimedia Screen' },
+      { label: 'Delivery Arms', value: 'Continental or International System' },
+      { label: 'Micromotor', value: 'i-MMrL Brushless LED (100 - 40,000 RPM)' },
+      { label: 'Hygiene Cycles', value: 'Autosteril & Time Flushing Automated' },
+      { label: 'Operating Light', value: 'Venus Plus L LED (3,000 - 50,000 Lux)' }
+    ],
+    features: [
+      'Multi-profile memorization for different dental practitioners',
+      'Integrated endodontic reciprocating wave and apex locator',
+      'Autosteril automatic internal water line and suction disinfection',
+      'Soft Motion electromechanical chair with 190 kg load rating',
+      'Pneumatically balanced instrument delivery arm with zero drift'
+    ],
+    isFeatured: true
+  },
+  {
+    id: 'skema-5',
+    name: 'Castellini Skema 5',
+    brand: 'Castellini',
+    brandLabel: 'Castellini Italy',
+    category: 'units',
+    categoryLabel: 'Dental Treatment Unit',
+    tagline: 'Versatile and ergonomic dental unit with Smart Touch control and Italian styling.',
+    description: 'Engineered for everyday practice efficiency with intuitive Smart Touch controls, compact footprint, and whisper-quiet electromechanical movements.',
+    fullOverview: 'The Castellini Skema 5 provides dental surgeons with great operational freedom. Whether configured with over-the-patient continental arms or hanging tube international delivery, its streamlined profile and robust Italian mechanics ensure reliable performance for decades.',
+    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80',
+    specs: [
+      { label: 'Origin', value: 'Made in Italy' },
+      { label: 'Control Display', value: 'Smart Touch Digital Display' },
+      { label: 'Delivery Model', value: 'Continental / International' },
+      { label: 'Operating Light', value: 'Venus E LED with No-Touch Sensor' },
+      { label: 'Headrest', value: 'Double-Articulated Pneumatic Lock' }
+    ],
+    features: [
+      'Compact floor footprint ideal for private clinics and dental practices',
+      'Autoclavable silicone instrument pads and removable ceramic cuspidor',
+      'Integrated ultrasonic scaler with LED fiber-optic illumination',
+      'Programmable chair memory positions for quick patient entry and exit'
+    ],
+    isFeatured: true
+  },
+  {
+    id: 'puma-eli',
+    name: 'Castellini Puma ELI',
+    brand: 'Castellini',
+    brandLabel: 'Castellini Italy',
+    category: 'units',
+    categoryLabel: 'Dental Treatment Unit',
+    tagline: 'Dynamic, essential, and supremely reliable treatment unit made in Italy.',
+    description: 'The optimal balance of Italian aesthetics, clinical functionality, and exceptional durability for modern dental clinics.',
+    fullOverview: 'The Puma ELI provides dental professionals with pure Italian styling and uncompromised dependability. Featuring a simple interface, high-grade seamless upholstery, and smooth positioning, it is the favored workhorse for demanding clinics.',
+    image: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=1200&q=80',
+    specs: [
+      { label: 'Origin', value: 'Made in Italy' },
+      { label: 'Keypad', value: 'Numeric LED Display & Capacitive Keys' },
+      { label: 'Cuspidor', value: 'Ceramic Swivel Cuspidor' },
+      { label: 'Lighting', value: 'LED Surgical Lamp' }
+    ],
+    features: [
+      'Intuitive keypad with programmable chair positions',
+      'Smooth and quiet electromechanical movement',
+      'High-grade Italian mechanical components designed for longevity',
+      'Rapid maintenance access for filters and tubing'
+    ]
+  },
+  {
+    id: 'thalya-plus',
+    name: 'Castellini Thalya Plus',
+    brand: 'Castellini',
+    brandLabel: 'Castellini Italy',
+    category: 'hygiene',
+    categoryLabel: 'Handpiece Maintenance Station',
+    tagline: 'Automatic cleaning, disinfection, lubrication, and purging station for 4 rotary instruments.',
+    description: 'Ensures thorough maintenance and extends the lifespan of turbines, contra-angles, and handpieces in just seconds.',
+    fullOverview: 'The Thalya Plus handpiece station cleans, lubricates, and flushes up to 4 dental instruments simultaneously. With its integrated pressure gauge and automatic rotation during cycles, it ensures optimal hygiene standards and protects your expensive handpiece investments.',
+    image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80',
+    specs: [
+      { label: 'Capacity', value: '4 Instruments simultaneously' },
+      { label: 'Cycle Duration', value: '55 to 120 seconds' },
+      { label: 'Dosage', value: 'Micro-Metered Precision Injection' },
+      { label: 'Interface', value: 'Digital Cycle Control Panel' }
+    ],
+    features: [
+      'Fully automatic 4-step cycle: purge, clean, lubricate, dry',
+      'Protects micro-bearings and internal spray ducts',
+      'Universal adapters for all major handpiece brands',
+      'Transparent oil level inspection window'
+    ]
   }
 ];

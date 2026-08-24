@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { PRODUCTS } from '../data/products';
+import { useCatalog } from '../context/CatalogContext';
 import { ProductCard } from '../components/ProductCard';
 import { useLanguage } from '../context/LanguageContext';
 import { Search, Filter, Grid, List, Sparkles, X } from 'lucide-react';
@@ -11,6 +11,7 @@ interface CatalogPageProps {
 
 export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
   const { t } = useLanguage();
+  const { products } = useCatalog();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const brandQuery = searchParams.get('brand') || 'all';
@@ -20,7 +21,7 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const filteredProducts = useMemo(() => {
-    return PRODUCTS.filter((p) => {
+    return products.filter((p) => {
       // Search filter
       const matchSearch =
         p.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -38,7 +39,7 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
 
       return matchSearch && matchBrand && matchCategory;
     });
-  }, [search, brandQuery, categoryQuery]);
+  }, [products, search, brandQuery, categoryQuery]);
 
   const setCategoryFilter = (cat: string) => {
     const newParams = new URLSearchParams(searchParams);
@@ -63,7 +64,7 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
           <div className="space-y-2 max-w-2xl">
             <span className="text-[#FF6600] font-bold uppercase tracking-widest text-xs flex items-center gap-1.5">
               <Sparkles className="w-4 h-4" />
-              <span>DGSHAPE & Zubler Official Catalog</span>
+              <span>{t('catalog_tag')}</span>
             </span>
             <h1 className="text-3xl sm:text-5xl font-black uppercase font-['Space_Grotesk'] tracking-tight">
               {t('catalog_title')}
@@ -75,8 +76,8 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
 
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 flex items-center gap-4 text-xs font-mono text-zinc-400">
             <div>
-              <span className="block text-zinc-500 uppercase">Available Models</span>
-              <span className="text-lg font-bold text-white">{filteredProducts.length} Equipment</span>
+              <span className="block text-zinc-500 uppercase">{t('available_models')}</span>
+              <span className="text-lg font-bold text-white">{filteredProducts.length} {t('equipment_count')}</span>
             </div>
           </div>
         </div>
@@ -116,7 +117,7 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
                     ? 'bg-zinc-900 text-white border-zinc-900'
                     : 'bg-zinc-100 text-zinc-600 border-zinc-200 hover:bg-zinc-200'
                 }`}
-                title="Grid View"
+                title="Grid"
               >
                 <Grid className="w-4 h-4" />
               </button>
@@ -127,7 +128,7 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
                     ? 'bg-zinc-900 text-white border-zinc-900'
                     : 'bg-zinc-100 text-zinc-600 border-zinc-200 hover:bg-zinc-200'
                 }`}
-                title="List View"
+                title="List"
               >
                 <List className="w-4 h-4" />
               </button>
@@ -142,13 +143,15 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 mr-2 flex items-center gap-1">
                 <Filter className="w-3.5 h-3.5" />
-                Category:
+                {t('filter_category')}
               </span>
               {[
                 { id: 'all', label: t('filter_all') },
                 { id: 'milling', label: t('filter_milling') },
+                { id: 'units', label: t('filter_units') },
                 { id: 'furnaces', label: t('filter_furnaces') },
                 { id: 'suction', label: t('filter_suction') },
+                { id: 'hygiene', label: t('filter_hygiene') },
               ].map((c) => (
                 <button
                   key={c.id}
@@ -165,14 +168,15 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
             </div>
 
             {/* Brand Filter */}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-bold uppercase tracking-wider text-zinc-400 mr-2">
-                Brand:
+                {t('filter_brand')}
               </span>
               {[
                 { id: 'all', label: t('brand_all') },
                 { id: 'dgshape', label: 'DGSHAPE' },
                 { id: 'zubler', label: 'Zubler' },
+                { id: 'castellini', label: 'Castellini' },
               ].map((b) => (
                 <button
                   key={b.id}
@@ -196,10 +200,10 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
         {filteredProducts.length === 0 ? (
           <div className="bg-white rounded-3xl p-16 text-center border border-zinc-200 space-y-4">
             <h3 className="text-2xl font-black uppercase font-['Space_Grotesk'] text-zinc-800">
-              No Equipment Matches Your Search
+              {t('no_products_title')}
             </h3>
             <p className="text-zinc-500 text-xs">
-              Try adjusting your keyword filter or switching category tabs.
+              {t('no_products_sub')}
             </p>
             <button
               onClick={() => {
@@ -209,7 +213,7 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
               }}
               className="bg-[#FF6600] text-white px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider"
             >
-              Reset Filters
+              {t('reset_filters')}
             </button>
           </div>
         ) : viewMode === 'grid' ? (
@@ -260,13 +264,13 @@ export const CatalogPage: React.FC<CatalogPageProps> = ({ onRequestQuote }) => {
                     onClick={() => onRequestQuote(p.name)}
                     className="bg-[#FF6600] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-[#ff771c] w-full md:w-36 text-center"
                   >
-                    Request Quote
+                    {t('btn_quote')}
                   </button>
                   <a
                     href={`#/product/${p.id}`}
                     className="border border-zinc-300 text-zinc-800 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:border-black w-full md:w-36 text-center"
                   >
-                    View Specs
+                    {t('btn_view_specs')}
                   </a>
                 </div>
               </div>

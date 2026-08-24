@@ -82,7 +82,7 @@ export const AboutPage: React.FC = () => {
                 Direct Factory Authorization
               </h3>
               <p className="text-zinc-400 text-xs leading-relaxed">
-                We work directly with Roland DGSHAPE (Japan) and Zubler (Germany) without third-party brokers, ensuring authentic pricing and official manufacturer warranties.
+                We partner directly with leading international manufacturers without third-party brokers, ensuring authentic pricing, genuine spare parts, and official manufacturer warranties.
               </p>
             </div>
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { PRODUCTS } from '../data/products';
+import { useCatalog } from '../context/CatalogContext';
 import { ProductCard } from '../components/ProductCard';
 import { useLanguage } from '../context/LanguageContext';
 import { ArrowLeft, Sparkles, CheckCircle2, PhoneCall, ShieldCheck, FileText, Send } from 'lucide-react';
@@ -12,11 +12,29 @@ interface ProductDetailPageProps {
 export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onRequestQuote }) => {
   const { productId } = useParams<{ productId: string }>();
   const { t } = useLanguage();
+  const { products, getProductById } = useCatalog();
 
-  const product = PRODUCTS.find((p) => p.id === productId) || PRODUCTS[0];
-  const [selectedImg, setSelectedImg] = useState(product.image);
+  const product = getProductById(productId || '') || products[0];
+  const [selectedImg, setSelectedImg] = useState(product?.image || '');
 
-  const relatedProducts = PRODUCTS.filter(
+  useEffect(() => {
+    if (product) {
+      setSelectedImg(product.image);
+    }
+  }, [product]);
+
+  if (!product) {
+    return (
+      <div className="min-h-screen bg-white pt-32 pb-24 px-4 text-center">
+        <h2 className="text-2xl font-bold">Equipment not found</h2>
+        <Link to="/catalog" className="text-[#FF6600] font-bold mt-4 inline-block">
+          Return to Catalog
+        </Link>
+      </div>
+    );
+  }
+
+  const relatedProducts = products.filter(
     (p) => p.id !== product.id && (p.brand === product.brand || p.category === product.category)
   ).slice(0, 3);
 
@@ -32,7 +50,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onRequestQ
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-500 hover:text-[#FF6600] transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Catalog</span>
+          <span>{t('back_to_catalog')}</span>
         </Link>
 
         {/* Product Split Showcase */}
@@ -73,10 +91,10 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onRequestQ
               <ShieldCheck className="w-8 h-8 text-[#FF6600] shrink-0" />
               <div>
                 <span className="font-bold uppercase text-zinc-900 block">
-                  ADN Dental Official Importer Warranty
+                  {t('warranty_title')}
                 </span>
                 <span className="text-zinc-500">
-                  Includes 2-Year Warranty, local setup in Algeria, and direct VPanel/TeamViewer remote support.
+                  {t('warranty_sub')}
                 </span>
               </div>
             </div>
@@ -109,7 +127,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ onRequestQ
 
               <button
                 onClick={() => {
-                  const SALES_NUM = '213555123456';
+                  const SALES_NUM = '213698094000';
                   const msg = encodeURIComponent(`Hello, I would like to request a live demonstration of ${product.name}`);
                   window.open(`https://wa.me/${SALES_NUM}?text=${msg}`, '_blank');
                 }}

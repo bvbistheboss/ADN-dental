@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { DOWNLOADS, FAQS } from '../data/content';
+import { FAQS } from '../data/content';
+import { useCatalog } from '../context/CatalogContext';
 import { useLanguage } from '../context/LanguageContext';
 import { Wrench, Download, ChevronDown, CheckCircle2, PhoneCall, Sparkles, Send } from 'lucide-react';
 
 export const SupportPage: React.FC = () => {
   const { t, language } = useLanguage();
+  const { downloads, addInquiry } = useCatalog();
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -16,6 +18,17 @@ export const SupportPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    addInquiry({
+      type: 'support_ticket',
+      name: name.trim() || 'Technical Support Ticket',
+      phone: phone.trim(),
+      wilaya: wilaya.trim() || 'Algeria',
+      productOrTopic: `Machine S/N: ${serial || 'Unspecified'}`,
+      notes: problem.trim(),
+      date: new Date().toLocaleDateString('fr-FR'),
+    });
+
     const TECH_NUM = '213698094000';
     const msg = `TECHNICAL SUPPORT TICKET:\n- Name: ${name}\n- Phone: ${phone}\n- Wilaya: ${wilaya}\n- Machine S/N: ${serial || 'N/A'}\n- Description: ${problem}`;
     const encoded = encodeURIComponent(msg);
@@ -31,7 +44,7 @@ export const SupportPage: React.FC = () => {
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <span className="text-[#FF6600] font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-1.5">
             <Wrench className="w-4 h-4" />
-            <span>24/7 Technical Service & Calibration</span>
+            <span>{t('tech_badge')}</span>
           </span>
           <h1 className="text-4xl sm:text-5xl font-black uppercase font-['Space_Grotesk'] tracking-tight">
             {t('tech_title')}
@@ -46,10 +59,10 @@ export const SupportPage: React.FC = () => {
           
           <div className="space-y-2 border-b border-zinc-800 pb-6">
             <h2 className="text-2xl font-black uppercase font-['Space_Grotesk'] text-white">
-              Submit Technical Ticket
+              {t('ticket_title')}
             </h2>
             <p className="text-zinc-400 text-xs">
-              Direct connection with our certified engineers in Algiers for hardware troubleshooting, spindle inspection, or software setup.
+              {t('ticket_sub')}
             </p>
           </div>
 
@@ -57,10 +70,10 @@ export const SupportPage: React.FC = () => {
             <div className="bg-emerald-500/10 border border-emerald-500/20 p-8 rounded-2xl text-center space-y-3">
               <CheckCircle2 className="w-12 h-12 text-emerald-400 mx-auto" />
               <h3 className="text-xl font-bold uppercase font-['Space_Grotesk']">
-                Ticket Sent to Technical Desk
+                {t('ticket_sent_title')}
               </h3>
               <p className="text-zinc-300 text-xs max-w-md mx-auto">
-                WhatsApp opened with your pre-formatted ticket details. An ADN Dental engineer will join your session shortly.
+                {t('ticket_sent_sub')}
               </p>
             </div>
           ) : (
@@ -153,7 +166,7 @@ export const SupportPage: React.FC = () => {
         <div className="space-y-6">
           <div className="space-y-1">
             <span className="text-[#FF6600] font-bold uppercase tracking-widest text-xs">
-              Official Repositories
+              {t('repositories_tag')}
             </span>
             <h2 className="text-2xl sm:text-3xl font-black uppercase font-['Space_Grotesk'] text-zinc-900">
               {t('downloads_title')}
@@ -161,7 +174,7 @@ export const SupportPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {DOWNLOADS.map((dl) => (
+            {downloads.map((dl) => (
               <div
                 key={dl.id}
                 className="bg-white rounded-2xl p-6 border border-zinc-200/80 shadow-sm flex items-start justify-between gap-4"

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { PRODUCTS } from '../data/products';
+import { useCatalog } from '../context/CatalogContext';
 import { ProductCard } from '../components/ProductCard';
-import { useLanguage } from '../context/LanguageContext';
-import { Award, ShieldCheck, ArrowRight, Sparkles, CheckCircle2, FileText, Download } from 'lucide-react';
+import { ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface BrandPageProps {
   onRequestQuote: (productName: string) => void;
@@ -11,13 +10,30 @@ interface BrandPageProps {
 
 export const BrandPage: React.FC<BrandPageProps> = ({ onRequestQuote }) => {
   const { brandId } = useParams<{ brandId: string }>();
-  const { t } = useLanguage();
+  const { products } = useCatalog();
+  const idLower = brandId?.toLowerCase() || '';
 
-  const isDgshape = brandId?.toLowerCase() === 'dgshape';
-  const brandName = isDgshape ? 'DGSHAPE by Roland' : 'Zubler Dental Equipment';
-  const brandKey = isDgshape ? 'DGSHAPE' : 'Zubler';
+  let brandName = 'DGSHAPE by Roland';
+  let brandKey = 'DGSHAPE';
+  let brandDescription = 'DGSHAPE by Roland is the worldwide market leader in dental CAD/CAM 5-axis dry and wet milling machines. Engineered in Japan for absolute reliability, continuous 24-hour production, and sub-micron accuracy.';
+  let brandImage = 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80';
+  let supportText = 'ADN Dental is the official warranty provider in Algeria. We hold original Roland spindles, burs, Zubler muffles, and HEPA filters in central Algiers stock.';
 
-  const brandProducts = PRODUCTS.filter((p) => p.brand.toLowerCase() === brandKey.toLowerCase());
+  if (idLower === 'zubler') {
+    brandName = 'Zubler Dental Equipment';
+    brandKey = 'Zubler';
+    brandDescription = 'Zubler Dental Equipment is Germany\'s premier manufacturer of ceramic pressing furnaces, porcelain firing chambers, and quiet dust extraction systems. Renowned worldwide since 1978 for patented ADVANCED PRESS muffle technology.';
+    brandImage = 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80';
+    supportText = 'ADN Dental maintains genuine Zubler spiral quartz heating muffles, thermal sensors, and suction turbine components for rapid on-site repair.';
+  } else if (idLower === 'castellini') {
+    brandName = 'Castellini Dental Units';
+    brandKey = 'Castellini';
+    brandDescription = 'Founded in Italy in 1935, Castellini represents the pinnacle of Italian dental unit manufacturing, clinical ergonomics, and automated hygiene engineering. Combining luxury Soft Motion patient chairs with Full Touch multimedia consoles.';
+    brandImage = 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80';
+    supportText = 'ADN Dental provides certified installation, waterline calibration, and genuine Italian replacement valves, circuit boards, and upholstery across all 69 wilayas.';
+  }
+
+  const brandProducts = products.filter((p) => p.brand.toLowerCase() === brandKey.toLowerCase());
 
   return (
     <div className="min-h-screen bg-white pt-24">
@@ -37,27 +53,25 @@ export const BrandPage: React.FC<BrandPageProps> = ({ onRequestQuote }) => {
             </h1>
 
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed">
-              {isDgshape
-                ? 'DGSHAPE by Roland is the worldwide market leader in dental CAD/CAM 5-axis dry and wet milling machines. Engineered in Japan for absolute reliability, continuous 24-hour production, and sub-micron accuracy.'
-                : 'Zubler Dental Equipment is Germany\'s premier manufacturer of ceramic pressing furnaces, porcelain firing chambers, and quiet dust extraction systems. Renowned worldwide since 1978 for ADVANCED PRESS muffle technology.'}
+              {brandDescription}
             </p>
 
             <div className="grid grid-cols-2 gap-4 pt-4 text-xs font-bold uppercase text-zinc-300">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#FF6600]" />
-                <span>2-Year Manufacturer Warranty</span>
+                <span>2-Year Official Warranty</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#FF6600]" />
-                <span>Original Parts & Spare Muffles</span>
+                <span>Original Genuine Spare Parts</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#FF6600]" />
-                <span>Certified On-Site Engineers</span>
+                <span>Certified On-Site Technicians</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#FF6600]" />
-                <span>VPanel & MillBox Support</span>
+                <span>Installation & Training Included</span>
               </div>
             </div>
 
@@ -73,11 +87,7 @@ export const BrandPage: React.FC<BrandPageProps> = ({ onRequestQuote }) => {
 
           <div className="lg:col-span-5 aspect-square rounded-[40px] overflow-hidden border border-zinc-800 shadow-2xl relative">
             <img
-              src={
-                isDgshape
-                  ? 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80'
-                  : 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80'
-              }
+              src={brandImage}
               alt={brandName}
               className="w-full h-full object-cover"
             />
@@ -111,7 +121,7 @@ export const BrandPage: React.FC<BrandPageProps> = ({ onRequestQuote }) => {
             Need Installation or Maintenance for {brandKey}?
           </h3>
           <p className="text-zinc-600 text-xs sm:text-sm">
-            ADN Dental is the official warranty provider in Algeria. We hold original Roland spindles, burs, Zubler muffles, and HEPA filters in central Algiers stock.
+            {supportText}
           </p>
           <div className="pt-2">
             <Link

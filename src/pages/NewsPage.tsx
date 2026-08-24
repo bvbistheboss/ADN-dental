@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { NEWS_ARTICLES } from '../data/content';
 import { NewsArticle } from '../types';
+import { useCatalog } from '../context/CatalogContext';
 import { useLanguage } from '../context/LanguageContext';
 import { Calendar, User, ArrowRight, X, Sparkles } from 'lucide-react';
 
 export const NewsPage: React.FC = () => {
   const { t } = useLanguage();
+  const { news } = useCatalog();
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
 
   return (
@@ -27,8 +28,8 @@ export const NewsPage: React.FC = () => {
         </div>
 
         {/* Articles Grid */}
-        <div className={`grid grid-cols-1 ${NEWS_ARTICLES.length > 1 ? 'md:grid-cols-3' : 'max-w-xl mx-auto'} gap-8`}>
-          {NEWS_ARTICLES.map((article) => (
+        <div className={`grid grid-cols-1 ${news.length > 1 ? 'md:grid-cols-3' : 'max-w-xl mx-auto'} gap-8`}>
+          {news.map((article) => (
             <div
               key={article.id}
               className="bg-white rounded-3xl border border-zinc-200/80 overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col group"

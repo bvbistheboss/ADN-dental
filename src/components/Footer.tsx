@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { MapPin, Phone, Mail, ShieldCheck, Award, Wrench } from 'lucide-react';
+import { MapPin, Phone, Mail, ShieldCheck, Award, Wrench, Lock } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { t } = useLanguage();
@@ -27,37 +27,43 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Suppliers */}
+          {/* Equipment Catalog Links */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF6600]">
-              Official Partners
+              Equipment Catalog
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/brand/dgshape" className="text-zinc-300 hover:text-[#FF6600] transition-colors flex items-center gap-2">
+                <Link to="/catalog?category=milling" className="text-zinc-300 hover:text-[#FF6600] transition-colors flex items-center gap-2">
                   <Award className="w-3.5 h-3.5 text-[#FF6600]" />
-                  DGSHAPE by Roland
+                  5-Axis CAD/CAM Milling
                 </Link>
               </li>
               <li>
-                <Link to="/brand/zubler" className="text-zinc-300 hover:text-[#FF6600] transition-colors flex items-center gap-2">
+                <Link to="/catalog?category=furnaces" className="text-zinc-300 hover:text-[#FF6600] transition-colors flex items-center gap-2">
                   <Award className="w-3.5 h-3.5 text-[#FF6600]" />
-                  Zubler Dental Germany
+                  Ceramic & Pressing Furnaces
                 </Link>
               </li>
               <li>
-                <Link to="/catalog?category=milling" className="text-zinc-300 hover:text-[#FF6600] transition-colors">
-                  5-Axis Milling Solutions
-                </Link>
-              </li>
-              <li>
-                <Link to="/catalog?category=furnaces" className="text-zinc-300 hover:text-[#FF6600] transition-colors">
-                  Ceramic Firing & Pressing
+                <Link to="/catalog?category=units" className="text-zinc-300 hover:text-[#FF6600] transition-colors flex items-center gap-2">
+                  <Award className="w-3.5 h-3.5 text-[#FF6600]" />
+                  Dental Treatment Units
                 </Link>
               </li>
               <li>
                 <Link to="/catalog?category=suction" className="text-zinc-300 hover:text-[#FF6600] transition-colors">
-                  Lab Dust Extraction Systems
+                  Laboratory Suction Systems
+                </Link>
+              </li>
+              <li>
+                <Link to="/catalog?category=hygiene" className="text-zinc-300 hover:text-[#FF6600] transition-colors">
+                  Hygiene & Maintenance
+                </Link>
+              </li>
+              <li>
+                <Link to="/catalog" className="text-zinc-300 hover:text-[#FF6600] transition-colors">
+                  View All Products
                 </Link>
               </li>
             </ul>
@@ -149,10 +155,21 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright */}
         <div className="pt-8 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
           <p>© {new Date().getFullYear()} ADN DENTAL. {t('all_rights')}</p>
-          <div className="flex items-center gap-6">
-            <span>DGSHAPE by Roland Authorized</span>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <span>CAD/CAM Technology</span>
             <span>•</span>
-            <span>Zubler Germany Authorized</span>
+            <span>Ceramic Furnaces</span>
+            <span>•</span>
+            <span>Dental Units</span>
+            <span>•</span>
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1 text-zinc-600 hover:text-[#FF6600] transition-colors"
+              title="Catalog Administration & Inventory Control"
+            >
+              <Lock className="w-3 h-3" />
+              <span>Staff Portal</span>
+            </Link>
           </div>
         </div>
 

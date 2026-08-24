@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
-import { COURSES } from '../data/content';
 import { Course } from '../types';
+import { useCatalog } from '../context/CatalogContext';
 import { useLanguage } from '../context/LanguageContext';
 import { Calendar, MapPin, Clock, User, CheckCircle2, Sparkles, Send } from 'lucide-react';
 
 export const CoursesPage: React.FC = () => {
   const { t } = useLanguage();
+  const { courses, addInquiry } = useCatalog();
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   const handleEnroll = (courseName: string) => {
+    addInquiry({
+      type: 'course_enroll',
+      name: 'Workshop Trainee',
+      phone: 'Unspecified',
+      productOrTopic: `Training Masterclass: ${courseName}`,
+      notes: 'Course seat reservation request initiated.',
+      date: new Date().toLocaleDateString('fr-FR'),
+    });
+
     const SALES_NUM = '213698094000';
     const msg = encodeURIComponent(`Enrollment Request for Course: ${courseName}`);
     window.open(`https://wa.me/${SALES_NUM}?text=${msg}`, '_blank');
@@ -34,7 +44,7 @@ export const CoursesPage: React.FC = () => {
 
         {/* Courses Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {COURSES.map((course) => (
+          {courses.map((course) => (
             <div
               key={course.id}
               className="bg-zinc-50 rounded-3xl border border-zinc-200/80 overflow-hidden shadow-sm flex flex-col justify-between"

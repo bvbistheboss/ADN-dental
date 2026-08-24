@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
+import { CatalogProvider } from './context/CatalogContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { WhatsAppFab } from './components/WhatsAppFab';
@@ -15,6 +16,7 @@ import { NewsPage } from './pages/NewsPage';
 import { CoursesPage } from './pages/CoursesPage';
 import { SupportPage } from './pages/SupportPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminPage } from './pages/AdminPage';
 
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
@@ -52,6 +54,9 @@ export const AppContent: React.FC = () => {
           <Route path="/courses" element={<CoursesPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/adn-admin" element={<AdminPage />} />
+          <Route path="/secret-admin" element={<AdminPage />} />
           <Route path="*" element={<HomePage onRequestQuote={handleRequestQuote} />} />
         </Routes>
       </main>
@@ -73,7 +78,9 @@ export const App: React.FC = () => {
   return (
     <HashRouter>
       <LanguageProvider>
-        <AppContent />
+        <CatalogProvider>
+          <AppContent />
+        </CatalogProvider>
       </LanguageProvider>
     </HashRouter>
   );

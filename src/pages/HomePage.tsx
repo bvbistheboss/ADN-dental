@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { PRODUCTS } from '../data/products';
-import { NEWS_ARTICLES } from '../data/content';
+import { useCatalog } from '../context/CatalogContext';
 import { ProductCard } from '../components/ProductCard';
 import { ArrowRight, ShieldCheck, Award, Sparkles, Wrench, CheckCircle2, ChevronRight, MapPin, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -13,8 +12,9 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
   const { t } = useLanguage();
+  const { products, news } = useCatalog();
 
-  const featuredProducts = PRODUCTS.filter((p) => p.isFeatured).slice(0, 4);
+  const featuredProducts = products.filter((p) => p.isFeatured).slice(0, 4);
 
   return (
     <div className="min-h-screen bg-white">
@@ -76,15 +76,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
               </button>
             </motion.div>
 
-            {/* Quick Supplier badges */}
-            <div className="pt-8 border-t border-white/10 flex items-center gap-8 text-xs font-bold uppercase text-zinc-400 font-['Space_Grotesk']">
+            {/* Quick Feature badges */}
+            <div className="pt-8 border-t border-white/10 flex flex-wrap items-center gap-6 sm:gap-8 text-xs font-bold uppercase text-zinc-400 font-['Space_Grotesk']">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#FF6600]" />
-                <span>DGSHAPE by Roland</span>
+                <span>5-Axis CAD/CAM Milling</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#FF6600]" />
-                <span>Zubler Germany</span>
+                <span>Ceramic & Pressing Furnaces</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#FF6600]" />
+                <span>24/7 Certified Tech Support</span>
               </div>
             </div>
 
@@ -95,9 +99,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
       {/* MARQUEE BANNER */}
       <div className="bg-zinc-100 py-6 overflow-hidden border-b border-zinc-200">
         <div className="flex whitespace-nowrap animate-[marquee_30s_linear_infinite] gap-16 font-['Space_Grotesk'] font-black text-xl text-zinc-400 uppercase tracking-widest">
-          <span>{t('marquee_dgshape')}</span>
+          <span>{t('marquee_milling')}</span>
           <span>•</span>
-          <span>{t('marquee_zubler')}</span>
+          <span>{t('marquee_furnaces')}</span>
+          <span>•</span>
+          <span>{t('marquee_units')}</span>
           <span>•</span>
           <span>{t('marquee_precision')}</span>
           <span>•</span>
@@ -105,13 +111,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
           <span>•</span>
           <span>{t('marquee_support')}</span>
           <span>•</span>
-          <span>{t('marquee_dgshape')}</span>
+          <span>{t('marquee_milling')}</span>
           <span>•</span>
-          <span>{t('marquee_zubler')}</span>
+          <span>{t('marquee_furnaces')}</span>
+          <span>•</span>
+          <span>{t('marquee_units')}</span>
         </div>
       </div>
 
-      {/* SUPPLIERS BENTO SHOWCASE */}
+      {/* CATEGORIES BENTO SHOWCASE */}
       <section className="py-24 px-4 sm:px-8 max-w-[1400px] mx-auto">
         <div className="mb-12">
           <span className="text-[#FF6600] font-bold uppercase tracking-widest text-xs block mb-2">
@@ -122,57 +130,84 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
-          {/* DGSHAPE Card */}
+          {/* Milling Machines Card */}
           <Link
-            to="/brand/dgshape"
-            className="lg:col-span-7 relative h-[480px] rounded-[40px] overflow-hidden group shadow-lg"
+            to="/catalog?category=milling"
+            className="relative h-[480px] rounded-[40px] overflow-hidden group shadow-lg"
           >
             <img
               src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80"
-              alt="DGSHAPE Roland"
+              alt="CAD CAM Milling"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 sm:p-12 flex flex-col justify-end text-white">
-              <span className="text-[#FF6600] font-extrabold uppercase text-xs tracking-widest mb-2">
-                Authorized Importer
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-8 flex flex-col justify-end text-white">
+              <span className="text-[#FF6600] font-extrabold uppercase text-[10px] tracking-widest mb-2">
+                High Precision Production
               </span>
-              <h3 className="text-3xl sm:text-5xl font-black uppercase font-['Space_Grotesk'] leading-none mb-3">
-                DGSHAPE by Roland
+              <h3 className="text-2xl sm:text-3xl font-black uppercase font-['Space_Grotesk'] leading-tight mb-2">
+                {t('cat_milling_title')}
               </h3>
-              <p className="text-zinc-300 text-sm max-w-md mb-6">
-                {t('dgshape_desc')}
+              <p className="text-zinc-300 text-xs mb-5 line-clamp-2">
+                {t('cat_milling_desc')}
               </p>
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white group-hover:text-[#FF6600] transition-colors">
-                <span>Discover Milling Range</span>
+                <span>Explore Milling Units</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
           </Link>
 
-          {/* Zubler Card */}
+          {/* Furnaces Card */}
           <Link
-            to="/brand/zubler"
-            className="lg:col-span-5 relative h-[480px] rounded-[40px] overflow-hidden group shadow-lg"
+            to="/catalog?category=furnaces"
+            className="relative h-[480px] rounded-[40px] overflow-hidden group shadow-lg"
           >
             <img
               src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=80"
-              alt="Zubler Dental"
+              alt="Ceramic Furnaces"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 sm:p-12 flex flex-col justify-end text-white">
-              <span className="text-[#FF6600] font-extrabold uppercase text-xs tracking-widest mb-2">
-                German Engineering
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-8 flex flex-col justify-end text-white">
+              <span className="text-[#FF6600] font-extrabold uppercase text-[10px] tracking-widest mb-2">
+                Thermal & Firing Engineering
               </span>
-              <h3 className="text-3xl sm:text-4xl font-black uppercase font-['Space_Grotesk'] leading-none mb-3">
-                Zubler Dental
+              <h3 className="text-2xl sm:text-3xl font-black uppercase font-['Space_Grotesk'] leading-tight mb-2">
+                {t('cat_furnaces_title')}
               </h3>
-              <p className="text-zinc-300 text-sm mb-6">
-                {t('zubler_desc')}
+              <p className="text-zinc-300 text-xs mb-5 line-clamp-2">
+                {t('cat_furnaces_desc')}
               </p>
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white group-hover:text-[#FF6600] transition-colors">
-                <span>Discover Furnaces & Suctions</span>
+                <span>Explore Furnaces & Suction</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          </Link>
+
+          {/* Dental Treatment Units Card */}
+          <Link
+            to="/catalog?category=units"
+            className="relative h-[480px] rounded-[40px] overflow-hidden group shadow-lg md:col-span-2 lg:col-span-1"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80"
+              alt="Dental Treatment Units"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-8 flex flex-col justify-end text-white">
+              <span className="text-[#FF6600] font-extrabold uppercase text-[10px] tracking-widest mb-2">
+                Clinical Ergonomics & Hygiene
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black uppercase font-['Space_Grotesk'] leading-tight mb-2">
+                {t('cat_units_title')}
+              </h3>
+              <p className="text-zinc-300 text-xs mb-5 line-clamp-2">
+                {t('cat_units_desc')}
+              </p>
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white group-hover:text-[#FF6600] transition-colors">
+                <span>Explore Treatment Units</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -188,10 +223,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <span className="text-[#FF6600] font-bold uppercase tracking-widest text-xs block mb-2">
-                Flagship Solutions
+                {t('cat_tag')}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black uppercase font-['Space_Grotesk'] tracking-tight">
-                Featured Equipment
+                {t('catalog_title')}
               </h2>
             </div>
 
@@ -199,7 +234,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
               to="/catalog"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-900 hover:text-[#FF6600] transition-colors"
             >
-              <span>View Full Catalog</span>
+              <span>{t('nav_catalog')}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -290,8 +325,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
           </Link>
         </div>
 
-        <div className={`grid grid-cols-1 ${NEWS_ARTICLES.length > 1 ? 'md:grid-cols-3' : 'max-w-xl mx-auto'} gap-8`}>
-          {NEWS_ARTICLES.map((article) => (
+        <div className={`grid grid-cols-1 ${news.length > 1 ? 'md:grid-cols-3' : 'max-w-xl mx-auto'} gap-8`}>
+          {news.map((article) => (
             <div key={article.id} className="bg-white rounded-3xl border border-zinc-200 overflow-hidden flex flex-col group hover:border-[#FF6600] transition-colors">
               <div className="aspect-video overflow-hidden">
                 <img
@@ -332,13 +367,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
         <div className="space-y-3 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 text-[#FF6600] text-xs font-bold uppercase tracking-widest">
             <Wrench className="w-4 h-4" />
-            <span>Certified Technical Service Hub</span>
+            <span>{t('tech_badge')}</span>
           </div>
           <h3 className="text-2xl sm:text-4xl font-black uppercase font-['Space_Grotesk']">
-            Need On-Site Technician Maintenance or Software Driver Downloads?
+            {t('tech_title')}
           </h3>
           <p className="text-zinc-400 text-sm max-w-2xl">
-            Our certified engineers in Algiers provide teamviewer remote calibration, spindle replacement, and urgent troubleshooting.
+            {t('tech_sub')}
           </p>
         </div>
 
@@ -347,13 +382,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onRequestQuote }) => {
             to="/support"
             className="bg-[#FF6600] hover:bg-[#ff771c] text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all w-full sm:w-auto text-center"
           >
-            Submit Technical Ticket
+            {t('ticket_title')}
           </Link>
           <a
             href="tel:+213698094000"
             className="border border-white/30 hover:border-white text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest transition-all w-full sm:w-auto text-center"
           >
-            Call +213 698 09 40 00
+            +213 698 09 40 00
           </a>
         </div>
       </section>
